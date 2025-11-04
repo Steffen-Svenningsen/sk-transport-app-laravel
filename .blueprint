@@ -1,0 +1,37 @@
+created:
+    - database/factories/AreaFactory.php
+    - database/factories/GraveFactory.php
+    - database/factories/ServiceFactory.php
+    - database/factories/CustomerFactory.php
+    - database/factories/TaskTypeFactory.php
+    - database/factories/WorkTypeFactory.php
+    - database/factories/TaskFactory.php
+    - database/migrations/2025_11_04_102256_create_areas_table.php
+    - database/migrations/2025_11_04_102257_create_graves_table.php
+    - database/migrations/2025_11_04_102258_create_services_table.php
+    - database/migrations/2025_11_04_102259_create_customers_table.php
+    - database/migrations/2025_11_04_102300_create_task_types_table.php
+    - database/migrations/2025_11_04_102301_create_work_types_table.php
+    - database/migrations/2025_11_04_102302_create_tasks_table.php
+    - app/Models/Area.php
+    - app/Models/Grave.php
+    - app/Models/Service.php
+    - app/Models/Customer.php
+    - app/Models/TaskType.php
+    - app/Models/WorkType.php
+    - app/Models/Task.php
+    - database/seeders/AreaSeeder.php
+    - database/seeders/GraveSeeder.php
+    - database/seeders/ServiceSeeder.php
+    - database/seeders/CustomerSeeder.php
+    - database/seeders/TaskTypeSeeder.php
+    - database/seeders/WorkTypeSeeder.php
+models:
+    User: { name: string, email: string, email_verified_at: 'timestamp nullable', password: string, remember_token: 'string:100 nullable' }
+    Area: { name: string }
+    Grave: { name: string, area_id: 'id foreign:areas' }
+    Service: { name: string }
+    Customer: { name: string, phone: 'string nullable', email: 'string nullable' }
+    TaskType: { name: string }
+    WorkType: { name: string }
+    Task: { task_type_id: 'id foreign:task_types', area_id: 'id foreign:areas nullable', grave_id: 'id foreign:graves nullable', service_id: 'id foreign:services', customer_id: 'id foreign:customers nullable', user_id: 'id foreign:users', work_type_id: 'id foreign:work_types nullable', work_date: 'datetime useCurrent', hours: 'decimal:5,2', break_hours: 'decimal:5,2 default:0.00', comment: 'text nullable' }
