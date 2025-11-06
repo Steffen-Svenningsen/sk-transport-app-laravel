@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use App\Filament\Auth\Login;
 use Filament\Actions\Action;
+use Filament\Auth\MultiFactor\App\AppAuthentication;
 use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -53,6 +54,7 @@ class AppPanelProvider extends PanelProvider
             ->plugins([
                 FilamentEditProfilePlugin::make()
                     ->shouldShowBrowserSessionsForm(false)
+                    ->shouldShowMultiFactorAuthentication(true)
                     ->setIcon('heroicon-o-user-circle')
                     ->setTitle(fn (): string => __('My Profile'))
                     ->slug('my-profile')
@@ -70,6 +72,9 @@ class AppPanelProvider extends PanelProvider
                     ->url('/admin')
                     ->icon('heroicon-o-cog')
                     ->visible(fn (): bool => Auth::user()?->can('viewAdminPanel', Auth::user()) ?? false),
+            ])
+            ->multiFactorAuthentication([
+                AppAuthentication::make(),
             ])
             ->middleware([
                 EncryptCookies::class,
