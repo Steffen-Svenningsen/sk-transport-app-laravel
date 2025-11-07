@@ -43,7 +43,16 @@ class TaskForm
                     ->required()
                     ->numeric()
                     ->default(0.0)
-                    ->maxValue(4.0),
+                    ->maxValue(4.0)
+                    ->rule(function ($get) {
+                        $hours = $get('hours');
+
+                        return function (string $attribute, $value, $fail) use ($hours) {
+                            if ($value >= $hours) {
+                                $fail(__('Break hours must be less than total hours worked'));
+                            }
+                        };
+                    }),
                 Textarea::make('comment')
                     ->label(__('Comment'))
                     ->columnSpanFull(),

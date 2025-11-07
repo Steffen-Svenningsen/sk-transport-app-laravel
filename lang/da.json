@@ -53,6 +53,7 @@
     "Time": "Tid",
     "Date and Time": "Dato og tid",
     "Task Duration (Hours)": "Opgavens varighed (timer)",
+    "Break hours must be less than total hours worked": "Pause timer skal være mindre end de samlede arbejdstimer",
 
     "__WORK RELATED__": "========== Work Related ==========",
     "Service": "Maskine/Ydelse",
