@@ -19,23 +19,30 @@ class TaskInfolist
                         Grid::make(3)
                             ->schema([
                                 TextEntry::make('taskType.name')
-                                    ->label(__('Task Type')),
+                                    ->label(__('Task Type'))
+                                    ->url(fn ($record) => $record->taskType ? route('filament.admin.resources.task-types.view', $record->taskType) : null),
                                 TextEntry::make('area.name')
                                     ->label(__('Area'))
-                                    ->placeholder('-'),
+                                    ->placeholder('-')
+                                    ->url(fn ($record) => $record->area ? route('filament.admin.resources.areas.view', $record->area) : null),
                                 TextEntry::make('grave.name')
                                     ->label(__('Grave'))
-                                    ->placeholder('-'),
+                                    ->placeholder('-')
+                                    ->url(fn ($record) => $record->grave ? route('filament.admin.resources.graves.view', $record->grave) : null),
                                 TextEntry::make('service.name')
-                                    ->label(__('Service')),
+                                    ->label(__('Service'))
+                                    ->url(fn ($record) => $record->service ? route('filament.admin.resources.services.view', $record->service) : null),
                                 TextEntry::make('customer.name')
                                     ->label(__('Customer'))
-                                    ->placeholder('-'),
+                                    ->placeholder('-')
+                                    ->url(fn ($record) => $record->customer ? route('filament.admin.resources.customers.view', $record->customer) : null),
                                 TextEntry::make('user.name')
-                                    ->label(__('User')),
+                                    ->label(__('User'))
+                                    ->url(fn ($record) => $record->user ? route('filament.admin.resources.users.view', $record->user) : null),
                                 TextEntry::make('workType.name')
                                     ->label(__('Work Type'))
-                                    ->placeholder('-'),
+                                    ->placeholder('-')
+                                    ->url(fn ($record) => $record->workType ? route('filament.admin.resources.work-types.view', $record->workType) : null),
                             ]),
                     ])
                     ->columnSpan(2)

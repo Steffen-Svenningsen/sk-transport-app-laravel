@@ -21,7 +21,8 @@ class GraveInfolist
                                 TextEntry::make('name')
                                     ->label(__('Name')),
                                 TextEntry::make('area.name')
-                                    ->label(__('Area')),
+                                    ->label(__('Area'))
+                                    ->url(fn ($record) => $record->area ? route('filament.admin.resources.areas.view', $record->area) : null),
                                 TextEntry::make('created_at')
                                     ->label(__('Created At'))
                                     ->dateTime('d M Y H:i')
