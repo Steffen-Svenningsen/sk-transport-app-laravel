@@ -3,6 +3,8 @@
 namespace App\Filament\Admin\Resources\WorkTypes\Schemas;
 
 use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class WorkTypeInfolist
@@ -11,16 +13,20 @@ class WorkTypeInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('name')
-                    ->label(__('Name')),
-                TextEntry::make('created_at')
-                    ->label(__('Created At'))
-                    ->dateTime('d M Y H:i')
-                    ->placeholder('-'),
-                TextEntry::make('updated_at')
-                    ->label(__('Updated At'))
-                    ->dateTime('d M Y H:i')
-                    ->placeholder('-'),
+                Section::make(__('Work Type Information'))
+                    ->description(__('Detailed information about the work type'))
+                    ->schema([
+                        Grid::make(2)
+                            ->schema([
+                                TextEntry::make('name')
+                                    ->label(__('Name')),
+                                TextEntry::make('created_at')
+                                    ->label(__('Created At'))
+                                    ->dateTime('d M Y H:i')
+                                    ->placeholder('-'),
+                            ]),
+                    ])
+                    ->columnSpanFull(),
             ]);
     }
 }

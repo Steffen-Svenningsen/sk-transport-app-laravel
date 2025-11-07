@@ -55,16 +55,21 @@ class TasksTable
                     ->sortable()
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('actual_time')
+                    ->label(__('Task Duration (Hours)'))
+                    ->numeric()
+                    ->sortable()
+                    ->toggleable(),
                 TextColumn::make('hours')
                     ->label(__('Hours'))
                     ->numeric()
                     ->sortable()
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('break_hours')
                     ->label(__('Break Hours'))
                     ->numeric()
                     ->sortable()
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('comment')
                     ->label(__('Comment'))
                     ->sortable()

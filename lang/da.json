@@ -20,6 +20,23 @@
     "Resources": "Ressourcer",
     "Operations": "Drift",
 
+    "__VIEWPAGE RELATED__": "========== ViewPage Related ==========",
+    "Task Details": "Opgavedetaljer",
+    "All Tasks": "Alle Opgaver",
+    "User Information": "Brugerinformation",
+    "Detailed information about the user": "Detaljeret information om brugeren",
+    "Customer Information": "Kundeinformation",
+    "Detailed information about the customer": "Detaljeret information om kunden",
+    "Area Information": "Oplysninger om område",
+    "Detailed information about the area": "Detaljeret information om området",
+    "Grave Information": "Oplysninger om grav",
+    "Detailed information about the grave": "Detaljeret information om graven",
+    "Service Information": "Oplysninger om maskine/ydelse",
+    "Detailed information about the service": "Detaljeret information om maskinen/ydelsen",
+    "Task Type Information": "Oplysninger om opgavetype",
+    "Detailed information about the task type": "Detaljeret information om opgavetype",
+    "Work Type Information": "Oplysninger om arbejdskategori",
+    "Detailed information about the work type": "Detaljeret information om arbejdskategorien",
 
     "__GENERAL__": "========== General ==========",
     "Name": "Navn",
@@ -32,6 +49,10 @@
     "My Profile": "Min Profil",
     "my-profile": "min-profil",
     "Date": "Dato",
+    "Detailed information about the task": "Detaljeret information om opgaven",
+    "Time": "Tid",
+    "Date and Time": "Dato og tid",
+    "Task Duration (Hours)": "Opgavens varighed (timer)",
 
     "__WORK RELATED__": "========== Work Related ==========",
     "Service": "Maskine/Ydelse",
@@ -51,7 +72,5 @@
     "Worktask": "Arbejdsopgave",
     "Task": "Opgave",
     "Employee": "Medarbejder",
-    "Employees": "Medarbejdere",
-    "Task Details": "Opgavedetaljer",
-    "All Tasks": "Alle Opgaver"
+    "Employees": "Medarbejdere"
 }

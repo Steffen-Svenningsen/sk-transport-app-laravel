@@ -50,6 +50,11 @@ class Task extends Model
         ];
     }
 
+    public function getActualTimeAttribute(): float
+    {
+        return $this->hours - $this->break_hours;
+    }
+
     public function taskType(): BelongsTo
     {
         return $this->belongsTo(TaskType::class);

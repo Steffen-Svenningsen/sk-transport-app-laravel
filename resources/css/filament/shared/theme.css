@@ -5,6 +5,19 @@ html.fi {
     scrollbar-gutter: auto;
 }
 
+/* Infolist entry styles */
+div.fi-in-entry {
+    @apply gap-1;
+}
+
+dt.fi-in-entry-label {
+    @apply font-normal text-gray-500 dark:text-gray-400;
+}
+
+div.fi-in-entry-content div {
+    @apply text-base font-medium text-gray-900 dark:text-gray-100;
+}
+
 /* Sidebar navigation styles */
 .fi-sidebar-nav .fi-sidebar-nav-groups {
     @apply h-full;
