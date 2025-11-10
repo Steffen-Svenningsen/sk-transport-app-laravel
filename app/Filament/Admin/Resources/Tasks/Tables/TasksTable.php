@@ -13,6 +13,10 @@ use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Malzariey\FilamentDaterangepickerFilter\Filters\DateRangeFilter;
+use pxlrbt\FilamentExcel\Actions\ExportAction;
+use pxlrbt\FilamentExcel\Actions\ExportBulkAction;
+use pxlrbt\FilamentExcel\Columns\Column;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
 
 class TasksTable
 {
@@ -129,12 +133,34 @@ class TasksTable
                 EditAction::make(),
                 DeleteAction::make(),
             ])
+            ->headerActions([
+                ExportAction::make()
+                    ->exports([
+                        ExcelExport::make()
+                            ->fromTable()
+                            ->withColumns([
+                                Column::make('actual_time')
+                                    ->heading(__('Task Duration (Hours)'))
+                                    ->formatStateUsing(fn ($record) => $record->actual_time),
+                            ]),
+                    ]),
+            ])
             ->recordUrl(function ($record) {
                 return route('filament.admin.resources.tasks.view', $record);
             })
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
+                    ExportBulkAction::make()
+                        ->exports([
+                            ExcelExport::make()
+                                ->fromTable()
+                                ->withColumns([
+                                    Column::make('actual_time')
+                                        ->heading(__('Task Duration (Hours)'))
+                                        ->formatStateUsing(fn ($record) => $record->actual_time),
+                                ]),
+                        ]),
                 ]),
             ]);
     }
