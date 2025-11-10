@@ -8,6 +8,8 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Wizard\Step;
+use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Auth;
 
 class TaskWizardSteps
 {
@@ -23,7 +25,13 @@ class TaskWizardSteps
                         ->reactive()
                         ->validationMessages([
                             'required' => __('The task type field is required'),
-                        ]),
+                        ])
+                        ->createOptionForm(fn (Schema $schema) => $schema->components([
+                            TextInput::make('name')
+                                ->label(__('Name'))
+                                ->required(),
+                        ]))
+                        ->createOptionAction(fn ($action) => $action->visible(fn () => Auth::user()->is_admin)),
                 ]),
 
             Step::make(__('Task Details'))
@@ -35,7 +43,14 @@ class TaskWizardSteps
                         ->visible(fn (Get $get): bool => optional(TaskType::find($get('task_type_id')))->name == 'Imerys')
                         ->validationMessages([
                             'required' => __('The area field is required'),
-                        ]),
+                        ])
+                        ->createOptionForm(fn (Schema $schema) => $schema->components([
+                            TextInput::make('name')
+                                ->label(__('Name'))
+                                ->required(),
+                        ]))
+                        ->createOptionAction(fn ($action) => $action->visible(fn () => Auth::user()->is_admin)),
+
                     Select::make('grave_id')
                         ->label(__('Grave'))
                         ->relationship('grave', 'name')
@@ -43,14 +58,37 @@ class TaskWizardSteps
                         ->visible(fn (Get $get): bool => optional(TaskType::find($get('task_type_id')))->name == 'Imerys')
                         ->validationMessages([
                             'required' => __('The grave field is required'),
-                        ]),
+                        ])
+                        ->createOptionForm(fn (Schema $schema) => $schema->components([
+                            TextInput::make('name')
+                                ->label(__('Name'))
+                                ->required(),
+                            Select::make('area_id')
+                                ->label(__('Area'))
+                                ->relationship('area', 'name')
+                                ->required()
+                                ->createOptionForm(fn (Schema $schema) => $schema->components([
+                                    TextInput::make('name')
+                                        ->label(__('Name'))
+                                        ->required(),
+                                ])),
+                        ]))
+                        ->createOptionAction(fn ($action) => $action->visible(fn () => Auth::user()->is_admin)),
+
                     Select::make('service_id')
                         ->label(__('Service'))
                         ->relationship('service', 'name')
                         ->required()
                         ->validationMessages([
                             'required' => __('The service field is required'),
-                        ]),
+                        ])
+                        ->createOptionForm(fn (Schema $schema) => $schema->components([
+                            TextInput::make('name')
+                                ->label(__('Name'))
+                                ->required(),
+                        ]))
+                        ->createOptionAction(fn ($action) => $action->visible(fn () => Auth::user()->is_admin)),
+
                     Select::make('customer_id')
                         ->label(__('Customer'))
                         ->relationship('customer', 'name')
@@ -59,10 +97,17 @@ class TaskWizardSteps
                         ->validationMessages([
                             'required' => __('The customer field is required'),
                         ]),
+
                     Select::make('work_type_id')
                         ->label(__('Work Type'))
                         ->relationship('workType', 'name')
-                        ->hidden(fn (Get $get): bool => optional(TaskType::find($get('task_type_id')))->name == 'SK Transport'),
+                        ->hidden(fn (Get $get): bool => optional(TaskType::find($get('task_type_id')))->name == 'SK Transport')
+                        ->createOptionForm(fn (Schema $schema) => $schema->components([
+                            TextInput::make('name')
+                                ->label(__('Name'))
+                                ->required(),
+                        ]))
+                        ->createOptionAction(fn ($action) => $action->visible(fn () => Auth::user()->is_admin)),
                 ]),
 
             Step::make(__('Time'))
@@ -75,6 +120,7 @@ class TaskWizardSteps
                         ])
                         ->numeric()
                         ->maxValue(24.0),
+
                     TextInput::make('break_hours')
                         ->label(__('Break Hours'))
                         ->required()

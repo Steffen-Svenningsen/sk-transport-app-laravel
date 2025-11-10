@@ -18,7 +18,12 @@ class GraveForm
                 Select::make('area_id')
                     ->label(__('Area'))
                     ->relationship('area', 'name')
-                    ->required(),
+                    ->required()
+                    ->createOptionForm(fn (Schema $schema) => $schema->components([
+                        TextInput::make('name')
+                            ->label(__('Name'))
+                            ->required(),
+                    ])),
             ]);
     }
 }

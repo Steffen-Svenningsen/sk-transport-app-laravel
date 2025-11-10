@@ -16,32 +16,83 @@ class TaskForm
                 Select::make('task_type_id')
                     ->label(__('Task Type'))
                     ->relationship('taskType', 'name')
-                    ->required(),
+                    ->required()
+                    ->createOptionForm(fn (Schema $schema) => $schema->components([
+                        TextInput::make('name')
+                            ->label(__('Name'))
+                            ->required(),
+                    ])),
+
                 Select::make('area_id')
                     ->label(__('Area'))
-                    ->relationship('area', 'name'),
+                    ->relationship('area', 'name')
+                    ->createOptionForm(fn (Schema $schema) => $schema->components([
+                        TextInput::make('name')
+                            ->label(__('Name'))
+                            ->required(),
+                    ])),
+
                 Select::make('grave_id')
                     ->label(__('Grave'))
-                    ->relationship('grave', 'name'),
+                    ->relationship('grave', 'name')
+                    ->createOptionForm(fn (Schema $schema) => $schema->components([
+                        TextInput::make('name')
+                            ->label(__('Name'))
+                            ->required(),
+                        Select::make('area_id')
+                            ->label(__('Area'))
+                            ->relationship('area', 'name')
+                            ->required()
+                            ->createOptionForm(fn (Schema $schema) => $schema->components([
+                                TextInput::make('name')
+                                    ->label(__('Name'))
+                                    ->required(),
+                            ])),
+                    ])),
+
                 Select::make('service_id')
                     ->label(__('Service'))
                     ->relationship('service', 'name')
-                    ->required(),
+                    ->required()
+                    ->createOptionForm(fn (Schema $schema) => $schema->components([
+                        TextInput::make('name')
+                            ->label(__('Name'))
+                            ->required(),
+                    ])),
+
                 Select::make('customer_id')
                     ->label(__('Customer'))
-                    ->relationship('customer', 'name'),
+                    ->relationship('customer', 'name')
+                    ->createOptionForm(fn (Schema $schema) => $schema->components([
+                        TextInput::make('name')
+                            ->label(__('Name'))
+                            ->required(),
+                        TextInput::make('phone')
+                            ->label(__('Phone')),
+                        TextInput::make('email')
+                            ->label(__('Email')),
+                    ])),
+
                 Select::make('user_id')
                     ->label(__('User'))
                     ->relationship('user', 'name')
                     ->required(),
+
                 Select::make('work_type_id')
                     ->label(__('Work Type'))
-                    ->relationship('workType', 'name'),
+                    ->relationship('workType', 'name')
+                    ->createOptionForm(fn (Schema $schema) => $schema->components([
+                        TextInput::make('name')
+                            ->label(__('Name'))
+                            ->required(),
+                    ])),
+
                 TextInput::make('hours')
                     ->label(__('Hours'))
                     ->required()
                     ->numeric()
                     ->maxValue(24.0),
+
                 TextInput::make('break_hours')
                     ->label(__('Break Hours'))
                     ->required()
@@ -57,6 +108,7 @@ class TaskForm
                             }
                         };
                     }),
+
                 Textarea::make('comment')
                     ->label(__('Comment'))
                     ->columnSpanFull(),

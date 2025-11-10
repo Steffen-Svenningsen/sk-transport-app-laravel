@@ -61,7 +61,7 @@ class User extends Authenticatable implements FilamentUser, HasAppAuthentication
         }
 
         if ($panel->getId() === 'admin') {
-            return $this->username === 'admin';
+            return $this->can('viewAdminPanel', $this);
         }
 
         return false;
