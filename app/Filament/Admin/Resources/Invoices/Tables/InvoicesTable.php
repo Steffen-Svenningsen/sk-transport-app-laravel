@@ -32,10 +32,15 @@ class InvoicesTable
                     ->dateTime('d M Y')
                     ->sortable()
                     ->toggleable(),
+                TextColumn::make('payment_due_date')
+                    ->label(__('Payment Due Date'))
+                    ->dateTime('d M Y')
+                    ->sortable()
+                    ->toggleable(),
                 TextColumn::make('subtotal')
                     ->money('dkk')
                     ->sortable()
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('total')
                     ->money('dkk')
                     ->sortable()
