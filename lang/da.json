@@ -69,6 +69,8 @@
     "The customer field is required": "Feltet for kunde er påkrævet",
     "The hours field is required": "Feltet for timer er påkrævet",
     "The break hours field is required": "Feltet for pause er påkrævet",
+    "Quantity is required.": "Antal er påkrævet.",
+    "Price is required.": "Pris er påkrævet.",
 
     "__WORK RELATED__": "========== Work Related ==========",
     "Service": "Maskine/Ydelse",
@@ -124,7 +126,7 @@
     "VAT 25%": "Moms 25%",
     "Total Amount": "Total beløb",
     "Bank Information for Payment": "Bankinformation for betaling",
-    "Account Number": "Kontonr.",
+    "Account Number": "Kontonr",
     "Account Holder": "Kontoindehaver",
     "Payment due within 14 days net": "Betaling 14 dage netto kontant",
     "Thereafter, 2% interest is charged per month": "Herefter beregnes 2% rente pr. måned",
@@ -132,5 +134,7 @@
     "Price": "Pris",
     "Tax (25%)": "Moms (25%)",
     "Select a service": "Vælg en ydelse",
-    "Tax": "Moms"
+    "Tax": "Moms",
+    "e.g. Transport, Broken bricks etc.": "f.eks. Transport, Knust tegl osv.",
+    "Adding a custom service will override the selected service.": "Tilføjelse af en brugerdefineret ydelse vil overskrive den valgte ydelse."
 }

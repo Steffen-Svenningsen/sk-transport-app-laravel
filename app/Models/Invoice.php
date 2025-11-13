@@ -94,4 +94,15 @@ class Invoice extends Model
     {
         return $this->belongsTo(Customer::class, 'customer_id')->withTrashed();
     }
+
+    protected static function booted()
+    {
+        static::saving(function ($invoice) {
+            $lines = collect($invoice->product_lines ?? []);
+            $subtotal = $lines->sum(fn ($line) => floatval($line['total'] ?? 0));
+            $invoice->subtotal = $subtotal;
+            $invoice->tax = round($subtotal * 0.25, 2);
+            $invoice->total = $invoice->subtotal + $invoice->tax;
+        });
+    }
 }

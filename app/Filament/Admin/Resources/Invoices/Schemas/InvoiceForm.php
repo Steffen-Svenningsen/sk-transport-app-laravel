@@ -55,6 +55,7 @@ class InvoiceForm
                 Repeater::make('product_lines')
                     ->label(__('Products or Services'))
                     ->reactive()
+                    ->required()
                     ->afterStateUpdated(function (Set $set, Get $get) {
                         $lines = collect($get('product_lines') ?? [])
                             ->map(function ($line) {
@@ -81,15 +82,22 @@ class InvoiceForm
                             ->label(__('Service'))
                             ->options(Service::pluck('name', 'id'))
                             ->searchable()
-                            ->placeholder(__('Select a service')),
+                            ->placeholder(__('Select a service'))
+                            ->required(fn (Get $get) => empty($get('custom_service')))
+                            ->disabled(fn (Get $get) => ! empty($get('custom_service'))),
 
                         TextInput::make('custom_service')
                             ->label(__('Custom Service'))
-                            ->placeholder(__('e.g. Transport')),
+                            ->helperText(__('Adding a custom service will override the selected service.'))
+                            ->placeholder(__('e.g. Transport, Broken bricks etc.')),
 
                         TextInput::make('quantity')
                             ->numeric()
                             ->default(1)
+                            ->required()
+                            ->validationMessages([
+                                'required' => __('Quantity is required.'),
+                            ])
                             ->label(__('Quantity'))
                             ->reactive()
                             ->afterStateUpdated(function ($state, Set $set, Get $get) {
@@ -101,6 +109,10 @@ class InvoiceForm
                         TextInput::make('unit_price')
                             ->numeric()
                             ->label(__('Price'))
+                            ->required()
+                            ->validationMessages([
+                                'required' => __('Price is required.'),
+                            ])
                             ->reactive()
                             ->afterStateUpdated(function ($state, Set $set, Get $get) {
                                 $quantity = floatval($get('quantity'));
