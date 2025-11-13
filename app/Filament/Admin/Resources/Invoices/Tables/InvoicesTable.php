@@ -23,7 +23,7 @@ class InvoicesTable
                     ->label(__('Invoice number'))
                     ->sortable()
                     ->searchable(),
-                TextColumn::make('customer.name')
+                TextColumn::make('customerWithTrashed.name')
                     ->label(__('Customer'))
                     ->sortable()
                     ->toggleable(),

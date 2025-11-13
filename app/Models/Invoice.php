@@ -89,4 +89,9 @@ class Invoice extends Model
 
         return 'SKT-'.str_pad($nextNumber, 5, '0', STR_PAD_LEFT);
     }
+
+    public function customerWithTrashed()
+    {
+        return $this->belongsTo(Customer::class, 'customer_id')->withTrashed();
+    }
 }
