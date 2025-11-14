@@ -20,7 +20,7 @@ dt.fi-in-entry-label {
 
 /* Sidebar navigation styles */
 .fi-sidebar-nav {
-    @apply pb-0 mb-8;
+    @apply pb-0;
 }
 
 .fi-sidebar-nav .fi-sidebar-nav-groups {
@@ -28,6 +28,10 @@ dt.fi-in-entry-label {
 
     li:last-child {
         @apply mt-auto;
+
+        &:not(.fi-sidebar-item-has-url) {
+            @apply pb-8;
+        }
     }
 }
 
