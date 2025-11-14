@@ -19,6 +19,10 @@ dt.fi-in-entry-label {
 }
 
 /* Sidebar navigation styles */
+.fi-sidebar-nav {
+    @apply pb-0 mb-8;
+}
+
 .fi-sidebar-nav .fi-sidebar-nav-groups {
     @apply h-full;
 
