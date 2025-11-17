@@ -43,7 +43,7 @@ class AdminPanelProvider extends PanelProvider
             ->brandLogoHeight('2.5rem')
             ->defaultThemeMode(ThemeMode::Light)
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Red,
             ])
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\Filament\Admin\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\Filament\Admin\Pages')

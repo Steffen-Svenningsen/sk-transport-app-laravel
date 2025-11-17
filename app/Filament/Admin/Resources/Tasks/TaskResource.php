@@ -27,7 +27,17 @@ class TaskResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
-        return static::getModel()::count();
+        $count = static::getModel()::count();
+
+        if ($count === 0) {
+            return null;
+        }
+
+        if ($count > 999) {
+            return '999+';
+        }
+
+        return (string) $count;
     }
 
     public static function getNavigationLabel(): string
