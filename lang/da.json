@@ -167,5 +167,10 @@
     "Invoice settings are not configured.": "Fakturaindstillinger er ikke konfigureret.",
     "Please configure the invoice settings before downloading invoices.": "Konfigurer venligst fakturaindstillingerne, før du downloader fakturaer.",
     "Invoice settings saved successfully.": "Fakturaindstillinger gemt succesfuldt.",
-    "Company Logo": "Firmalogo"
+    "Company Logo": "Firmalogo",
+
+    "___WIDGET___": "========== Widget ==========",
+    "User with Most Tasks This Week": "Medarbejder med flest opgaver denne uge",
+    "Create a task": "Opret en opgave",
+    "Click here to go directly to creating a task": "Klik her for at gå direkte til oprettelse af en opgave"
 }
