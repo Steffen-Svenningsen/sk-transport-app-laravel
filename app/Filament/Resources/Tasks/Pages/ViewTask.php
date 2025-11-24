@@ -19,7 +19,8 @@ class ViewTask extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
-            EditAction::make(),
+            EditAction::make()
+                ->extraAttributes(['class' => 'fi-button-secondary page-header-action']),
             DeleteAction::make(),
         ];
     }

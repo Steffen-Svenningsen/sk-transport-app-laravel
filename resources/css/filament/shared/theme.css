@@ -35,6 +35,19 @@ dt.fi-in-entry-label {
     }
 }
 
+/* Secondary button */
+.fi-button-secondary {
+    @apply bg-transparent outline-solid outline-1 outline-gray-300 font-medium text-gray-950 hover:bg-gray-50;
+
+    svg {
+        @apply text-gray-950;
+    }
+}
+
+.fi-button-secondary.page-header-action {
+    @apply hover:bg-white;
+}
+
 /* Multifactor authentication styles */
 #multiFactorChallengeForm\.app .fi-fo-field {
     place-items: center;

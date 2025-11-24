@@ -26,7 +26,8 @@ class ViewInvoice extends ViewRecord
                 ->label(__('Download PDF'))
                 ->icon(Heroicon::OutlinedArrowDownTray)
                 ->url(fn (Invoice $record) => route('invoices.download', $record), true),
-            EditAction::make(),
+            EditAction::make()
+                ->extraAttributes(['class' => 'fi-button-secondary page-header-action']),
             DeleteAction::make(),
         ];
     }
