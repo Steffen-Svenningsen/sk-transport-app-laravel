@@ -3,6 +3,7 @@
 namespace App\Filament\Admin\Resources\Users\Tables;
 
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -51,11 +52,13 @@ class UsersTable
             ->headerActions([
                 ExportAction::make()
                     ->label(__('Export to Excel'))
+                    ->extraAttributes(['class' => 'fi-button-secondary'])
                     ->exports([
                         ExcelExport::make()
                             ->fromTable()
                             ->askForFilename(__('users').'-'.now()->format('Y-m-d')),
                     ]),
+                CreateAction::make(),
             ])
             ->recordUrl(function ($record) {
                 return route('filament.admin.resources.users.view', $record);

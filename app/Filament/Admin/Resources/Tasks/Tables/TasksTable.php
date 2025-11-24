@@ -3,6 +3,7 @@
 namespace App\Filament\Admin\Resources\Tasks\Tables;
 
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -142,6 +143,7 @@ class TasksTable
             ->headerActions([
                 ExportAction::make()
                     ->label(__('Export to Excel'))
+                    ->extraAttributes(['class' => 'fi-button-secondary'])
                     ->exports([
                         ExcelExport::make()
                             ->fromTable()
@@ -152,6 +154,7 @@ class TasksTable
                                     ->formatStateUsing(fn ($record) => $record->actual_time),
                             ]),
                     ]),
+                CreateAction::make(),
             ])
             ->recordUrl(function ($record) {
                 return route('filament.admin.resources.tasks.view', $record);

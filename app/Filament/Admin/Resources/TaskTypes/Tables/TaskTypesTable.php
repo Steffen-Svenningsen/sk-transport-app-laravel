@@ -3,6 +3,7 @@
 namespace App\Filament\Admin\Resources\TaskTypes\Tables;
 
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -44,11 +45,13 @@ class TaskTypesTable
             ->headerActions([
                 ExportAction::make()
                     ->label(__('Export to Excel'))
+                    ->extraAttributes(['class' => 'fi-button-secondary'])
                     ->exports([
                         ExcelExport::make()
                             ->fromTable()
                             ->askForFilename(__('task_types').'-'.now()->format('Y-m-d')),
                     ]),
+                CreateAction::make(),
             ])
             ->recordUrl(function ($record) {
                 return route('filament.admin.resources.task-types.view', $record);

@@ -8,7 +8,7 @@
         .task-shortcut-section .fi-section-content {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 12px;
         }
 
         .task-shortcut-section:hover {
@@ -24,8 +24,8 @@
         }
 
         .task-shortcut-section .heroicon {
-            width: 40px;
-            height: 40px;
+            min-width: 40px;
+            min-height: 40px;
             color: oklch(0.705 0.015 286.067);
             display: grid;
             place-items: center;

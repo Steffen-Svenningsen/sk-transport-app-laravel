@@ -17,6 +17,7 @@ use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\Support\Enums\Platform;
 use Filament\Widgets\AccountWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -37,7 +38,11 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login(Login::class)
             ->globalSearchKeyBindings(['command+k', 'ctrl+k'])
-            ->globalSearchFieldKeyBindingSuffix()
+            ->globalSearchFieldSuffix(fn () => match (Platform::detect()) {
+                Platform::Mac => '⌘K',
+                Platform::Windows, Platform::Linux => 'CTRL+K',
+                default => null,
+            })
             ->spa()
             ->brandLogo(asset('SK_Transport_Logo.png'))
             ->brandLogoHeight('2.5rem')

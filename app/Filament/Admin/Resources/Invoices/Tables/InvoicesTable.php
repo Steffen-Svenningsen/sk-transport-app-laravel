@@ -5,6 +5,7 @@ namespace App\Filament\Admin\Resources\Invoices\Tables;
 use App\Models\Invoice;
 use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -67,6 +68,9 @@ class InvoicesTable
                     ->opens(OpenDirection::CENTER)
                     ->showWeekNumbers(),
             ], layout: FiltersLayout::Modal)
+            ->headerActions([
+                CreateAction::make(),
+            ])
             ->recordActions([
                 Action::make('download')
                     ->label(__('Download PDF'))

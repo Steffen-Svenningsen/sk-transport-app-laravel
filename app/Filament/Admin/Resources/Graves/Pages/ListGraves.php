@@ -3,7 +3,6 @@
 namespace App\Filament\Admin\Resources\Graves\Pages;
 
 use App\Filament\Admin\Resources\Graves\GraveResource;
-use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListGraves extends ListRecords
@@ -12,8 +11,6 @@ class ListGraves extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            CreateAction::make(),
-        ];
+        return [];
     }
 }

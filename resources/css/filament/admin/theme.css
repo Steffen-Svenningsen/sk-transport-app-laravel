@@ -9,6 +9,30 @@ a.fi-in-entry-content {
     @apply w-fit md:hover:underline;
 }
 
+/* Modal button */
 .fi-ta-filters-modal .fi-modal-footer-actions button:nth-of-type(2) {
     @apply bg-transparent h-9 text-red-500 border border-red-500 hover:bg-red-500 hover:text-white;
+}
+
+/* Secondary button */
+.fi-button-secondary {
+    @apply bg-transparent outline-solid outline-1 outline-gray-300 font-medium text-gray-950 hover:bg-gray-50;
+
+    svg {
+        @apply text-gray-950;
+    }
+}
+
+/* Widget stats overview value */
+.fi-wi-stats-overview-stat-value {
+    @apply text-2xl;
+}
+
+/* Tabs */
+.fi-tabs {
+    @apply max-w-fit;
+}
+
+.fi-tabs:not(.fi-contained) {
+    @apply mx-[unset];
 }

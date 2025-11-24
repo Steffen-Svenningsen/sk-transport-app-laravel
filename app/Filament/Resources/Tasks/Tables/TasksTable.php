@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Tasks\Tables;
 
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -110,6 +111,9 @@ class TasksTable
                     ])
                     ->columns(2)
                     ->columnSpanFull(),
+            ])
+            ->headerActions([
+                CreateAction::make(),
             ])
             ->recordActions([
                 EditAction::make(),
