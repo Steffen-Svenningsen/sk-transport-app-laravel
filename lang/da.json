@@ -168,6 +168,8 @@
     "Please configure the invoice settings before downloading invoices.": "Konfigurer venligst fakturaindstillingerne, før du downloader fakturaer.",
     "Invoice settings saved successfully.": "Fakturaindstillinger gemt succesfuldt.",
     "Company Logo": "Firmalogo",
+    "Missing Invoice Settings": "Manglende fakturaindstillinger",
+    "You must configure your invoice settings in order to download invoice PDFs": "Du skal konfigurere dine fakturaindstillinger for at kunne downloade faktura-PDF'er",
 
     "___WIDGET___": "========== Widget ==========",
     "User with Most Tasks This Week": "Medarbejder med flest opgaver denne uge",

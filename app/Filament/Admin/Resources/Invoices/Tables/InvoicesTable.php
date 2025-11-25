@@ -3,12 +3,14 @@
 namespace App\Filament\Admin\Resources\Invoices\Tables;
 
 use App\Models\Invoice;
+use App\Models\InvoiceSetting;
 use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Notifications\Notification;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
@@ -75,7 +77,21 @@ class InvoicesTable
                 Action::make('download')
                     ->label(__('Download PDF'))
                     ->icon(Heroicon::OutlinedArrowDownTray)
-                    ->url(fn (Invoice $record) => route('invoices.download', $record), true),
+                    ->action(function (Invoice $record) {
+                        $settings = InvoiceSetting::first();
+
+                        if (! $settings) {
+                            Notification::make()
+                                ->title(__('Missing Invoice Settings'))
+                                ->body(__('You must configure your invoice settings in order to download invoice PDFs'))
+                                ->danger()
+                                ->send();
+
+                            return;
+                        }
+
+                        return redirect()->route('invoices.download', $record);
+                    }),
                 EditAction::make(),
                 DeleteAction::make(),
             ])
