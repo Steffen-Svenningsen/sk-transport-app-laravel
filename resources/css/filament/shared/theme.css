@@ -68,6 +68,11 @@ dt.fi-in-entry-label {
     place-items: center;
 }
 
+/* Modal button */
+.fi-ta-filters-modal .fi-modal-footer-actions button:nth-of-type(2) {
+    @apply bg-transparent h-9 text-red-500 border border-red-500 hover:bg-red-500 hover:text-white;
+}
+
 /* Table actions */
 .fi-ta-header .fi-ta-actions button,
 .fi-ta-header .fi-ta-actions a {
