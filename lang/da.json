@@ -182,5 +182,8 @@
     "No tasks this week": "Ingen opgaver denne uge",
     "hrs": "timer",
     "Your Number of Submitted Tasks This Week": "Dine antal indsendte opgaver denne uge",
-    "Your Number of Submitted Hours This Week incl. Breaks": "Dine antal registrerede timer denne uge inkl. pauser"
+    "Your Number of Submitted Hours This Week incl. Breaks": "Dine antal registrerede timer denne uge inkl. pauser",
+
+    "___RELATIONMANAGER___": "========== RelationManager ==========",
+    "Employee Tasks": "Medarbejderens opgaver"
 }
