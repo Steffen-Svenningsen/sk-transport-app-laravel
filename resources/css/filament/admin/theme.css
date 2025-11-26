@@ -22,3 +22,8 @@ a.fi-in-entry-content {
 .fi-tabs:not(.fi-contained) {
     @apply mx-[unset];
 }
+
+/* User View page */
+.fi-page.fi-resource-view-record-page.fi-resource-users .fi-page-content {
+    @apply gap-6;
+}
