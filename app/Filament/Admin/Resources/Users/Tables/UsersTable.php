@@ -7,7 +7,10 @@ use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ForceDeleteAction;
+use Filament\Actions\RestoreAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 use pxlrbt\FilamentExcel\Actions\ExportAction;
 use pxlrbt\FilamentExcel\Actions\ExportBulkAction;
@@ -21,7 +24,8 @@ class UsersTable
             ->columns([
                 TextColumn::make('name')
                     ->label(__('Name'))
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('username')
                     ->label(__('Username'))
                     ->searchable()
@@ -30,6 +34,11 @@ class UsersTable
                     ->label(__('Email'))
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('is_admin')
+                    ->label(__('Role'))
+                    ->sortable()
+                    ->formatStateUsing(fn ($state) => $state ? __('Administrator') : __('Employee'))
+                    ->toggleable(),
                 TextColumn::make('created_at')
                     ->label(__('Created At'))
                     ->dateTime('d M Y H:i')
@@ -43,12 +52,16 @@ class UsersTable
             ])
             ->deferColumnManager(false)
             ->filters([
-                //
+                TrashedFilter::make(),
             ])
             ->recordActions([
                 EditAction::make()
                     ->extraAttributes(['class' => 'fi-ta-button-secondary']),
                 DeleteAction::make()
+                    ->extraAttributes(['class' => 'fi-ta-button-primary']),
+                RestoreAction::make()
+                    ->extraAttributes(['class' => 'fi-ta-button-secondary']),
+                ForceDeleteAction::make()
                     ->extraAttributes(['class' => 'fi-ta-button-primary']),
             ])
             ->headerActions([

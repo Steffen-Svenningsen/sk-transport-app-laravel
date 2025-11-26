@@ -61,6 +61,12 @@ dt.fi-in-entry-label {
 
 .fi-ta-button-secondary {
     @apply bg-transparent text-gray-950 dark:text-white p-2 rounded-lg border border-gray-300 hover:bg-white dark:hover:bg-gray-900! hover:no-underline;
+
+    &:has(svg) {
+        svg {
+            @apply text-gray-950 dark:text-white;
+        }
+    }
 }
 
 /* Multifactor authentication styles */

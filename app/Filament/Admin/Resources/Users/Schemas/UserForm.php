@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources\Users\Schemas;
 
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -17,7 +18,7 @@ class UserForm
                 TextInput::make('username')
                     ->label(__('Username'))
                     ->required()
-                    ->unique(),
+                    ->unique(ignorable: fn ($record) => $record),
                 TextInput::make('email')
                     ->label(__('Email address'))
                     ->email()
@@ -25,7 +26,18 @@ class UserForm
                 TextInput::make('password')
                     ->label(__('Password'))
                     ->password()
-                    ->required(),
+                    ->revealable()
+                    ->required(fn ($context) => $context === 'create')
+                    ->dehydrated(fn ($state) => filled($state))
+                    ->dehydrateStateUsing(fn ($state) => $state ? bcrypt($state) : null),
+                Select::make('is_admin')
+                    ->label(__('Role'))
+                    ->options([
+                        1 => __('Administrator'),
+                        0 => __('Employee'),
+                    ])
+                    ->required()
+                    ->default(0),
             ]);
     }
 }

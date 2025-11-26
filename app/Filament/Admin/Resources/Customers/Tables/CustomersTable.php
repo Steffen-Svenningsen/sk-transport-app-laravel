@@ -21,7 +21,8 @@ class CustomersTable
             ->columns([
                 TextColumn::make('name')
                     ->label(__('Name'))
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('phone')
                     ->label(__('Phone'))
                     ->searchable()

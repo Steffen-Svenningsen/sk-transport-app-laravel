@@ -20,6 +20,11 @@ class UserInfolist
                             ->schema([
                                 TextEntry::make('name')
                                     ->label(__('Name')),
+                                TextEntry::make('is_admin')
+                                    ->label(__('Role'))
+                                    ->formatStateUsing(fn ($state) => $state ? __('Administrator') : __('Employee')),
+                                TextEntry::make('username')
+                                    ->label(__('Username')),
                                 TextEntry::make('email')
                                     ->label(__('Email address'))
                                     ->placeholder('-'),

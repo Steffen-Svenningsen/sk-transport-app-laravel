@@ -59,6 +59,7 @@
     "Time": "Tid",
     "Date and Time": "Dato og tid",
     "Task Duration (Hours)": "Opgavens varighed (timer)",
+    "Role": "Rolle",
 
     "__VALIDATIONS__": "========== Validations ==========",
     "Break hours must be less than total hours worked": "Pause timer skal være mindre end de samlede arbejdstimer",
