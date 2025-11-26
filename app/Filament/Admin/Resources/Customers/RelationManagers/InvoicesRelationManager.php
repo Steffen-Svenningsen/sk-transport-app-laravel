@@ -12,6 +12,11 @@ class InvoicesRelationManager extends RelationManager
 
     protected static ?string $relatedResource = InvoiceResource::class;
 
+    public function isReadOnly(): bool
+    {
+        return false;
+    }
+
     public function table(Table $table): Table
     {
         return $table
