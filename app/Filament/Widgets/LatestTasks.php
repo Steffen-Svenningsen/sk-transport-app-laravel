@@ -31,10 +31,6 @@ class LatestTasks extends TableWidget
                     ->label(__('Task Type'))
                     ->sortable()
                     ->searchable(),
-                TextColumn::make('userWithTrashed.name')
-                    ->label(__('Employee'))
-                    ->sortable()
-                    ->searchable(),
                 TextColumn::make('actual_time')
                     ->label(__('Task Duration (Hours)'))
                     ->numeric()
