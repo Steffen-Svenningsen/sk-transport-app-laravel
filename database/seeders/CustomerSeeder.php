@@ -12,6 +12,8 @@ class CustomerSeeder extends Seeder
      */
     public function run(): void
     {
-        Customer::factory()->count(5)->create();
+        Customer::insert([
+            ['name' => 'Nordmors Murer', 'created_at' => now(), 'updated_at' => now()],
+        ]);
     }
 }
