@@ -34,8 +34,8 @@ class TaskFactory extends Factory
             'customer_id' => Customer::factory(),
             'user_id' => User::factory(),
             'work_type_id' => WorkType::factory(),
-            'hours' => fake()->randomFloat(2, 0, 999.99),
-            'break_hours' => fake()->randomFloat(2, 0, 999.99),
+            'hours' => fake()->randomFloat(2, 0, 14.00),
+            'break_hours' => fake()->randomFloat(2, 0, 2.00),
             'comment' => fake()->text(),
         ];
     }
