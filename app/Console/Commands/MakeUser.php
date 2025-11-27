@@ -9,16 +9,16 @@ use Illuminate\Support\Facades\Hash;
 
 class MakeUser extends Command
 {
-    protected $signature = 'make:user';
+    protected $signature = 'make:user {--name= : Name} {--username= : Username} {--password= : Password} {--admin : Is Admin}';
 
     protected $description = 'Create a new user for the application';
 
     public function handle()
     {
-        $name = $this->ask('Name');
-        $username = $this->ask('Username');
-        $password = $this->secret('Password');
-        $is_admin = $this->confirm('Should the user be an Admin?');
+        $name = $this->option('name') ?? 'Default Name';
+        $username = $this->option('username') ?? 'username';
+        $password = $this->option('password') ?? bin2hex(random_bytes(4));
+        $is_admin = $this->option('admin') ?? false;
 
         $user = User::create([
             'name' => $name,
