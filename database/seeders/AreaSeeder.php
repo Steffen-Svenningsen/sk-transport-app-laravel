@@ -12,6 +12,9 @@ class AreaSeeder extends Seeder
      */
     public function run(): void
     {
-        Area::factory()->count(5)->create();
+        Area::insert([
+            ['name' => 'Mors', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Fur', 'created_at' => now(), 'updated_at' => now()],
+        ]);
     }
 }

@@ -12,6 +12,14 @@ class ServiceSeeder extends Seeder
      */
     public function run(): void
     {
-        Service::factory()->count(5)->create();
+        Service::insert([
+            ['name' => 'Lastbil', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Gummiged', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => '30 tons Gravemaskine', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => '40 tons Gravemaskine', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Minigraver', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Varebil m. trailer', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Mandetimer', 'created_at' => now(), 'updated_at' => now()],
+        ]);
     }
 }

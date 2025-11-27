@@ -12,6 +12,10 @@ class TaskTypeSeeder extends Seeder
      */
     public function run(): void
     {
-        TaskType::factory()->count(5)->create();
+        TaskType::insert([
+            ['name' => 'Imerys', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Kundeopgave', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Intern', 'created_at' => now(), 'updated_at' => now()],
+        ]);
     }
 }
