@@ -5,6 +5,8 @@ use App\Filament\Admin\Resources\Users\Pages\EditUser;
 use App\Filament\Admin\Resources\Users\Pages\ListUsers;
 use App\Filament\Admin\Resources\Users\Pages\ViewUser;
 use App\Models\User;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\Testing\TestAction;
 use Filament\Facades\Filament;
 
 use function Pest\Laravel\actingAs;
@@ -117,4 +119,28 @@ it('can update a user', function () {
         'name' => $newUserData->name,
         'email' => $newUserData->email,
     ]);
+});
+
+it('can delete a user', function () {
+    $user = User::factory()->create();
+
+    livewire(EditUser::class, [
+        'record' => $user->getRouteKey(),
+    ])
+        ->callAction(DeleteAction::class);
+
+    $user->refresh();
+
+    expect($user->trashed())->toBeTrue();
+});
+
+it('can export user', function () {
+    livewire(ListUsers::class)
+        ->callAction(TestAction::make('export')->table());
+
+    livewire(ListUsers::class)
+        ->assertActionVisible(TestAction::make('export')->table());
+
+    livewire(ListUsers::class)
+        ->assertActionExists(TestAction::make('export')->table());
 });
